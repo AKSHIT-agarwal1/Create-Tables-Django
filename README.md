@@ -4,7 +4,7 @@ It is a Django based Web App in which user provides schema, table, column config
 ## Getting Started
 1. Initial WebPage looks like:
 ![Initial00](https://user-images.githubusercontent.com/42600241/111457694-8be9a780-873e-11eb-91f6-618f5a1684de.PNG)
-2. Enter The numbe of Columns in the Table you want to add:
+2. Enter The number of Columns in the Table you want to add:
 ![Initial01](https://user-images.githubusercontent.com/42600241/111457701-8d1ad480-873e-11eb-81db-9d689cb56461.PNG)
 3.Click on add Column and the Columns will be added:
 ![Initial02](https://user-images.githubusercontent.com/42600241/111457706-8d1ad480-873e-11eb-80a2-a23cf823ac91.PNG)
