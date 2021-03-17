@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Dynamic Tables</title>
+</head>
+<body>
+    <h1>Dynamic Tables</h1>
+    {% if error %}
+    <h2>{{error}}</h2>
+    {% endif %}
+    {% if x %}
+    <h2>{{x}}</h2>
+    {% endif %}
+    <form action="{% url 'home' %}">
+        <div>Number of Column:<input type="number" name="size" min="0"></div>
+        <input type="submit" value= "Add Column">
+    </form>
+    <form action="{% url 'home' %}" method = "POST">
+        {% csrf_token %}
+       <div> Schema Name:<input type="text" name="schema" ></div>
+        <div>Table Name:<input type="text" name="table" > </div>
+        {% for x in size %}
+        <div>Column {{ x|add:"1" }}:<input type="text" name="ColumnName{{ x }}"> Data Type:<input type="text" name="DataType{{ x }}" > </div>
+        {% endfor %}
+        <input type="submit" value= "Submit">
+    </form>
+
+</body>
+</html>
