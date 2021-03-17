@@ -25,8 +25,6 @@ def home(request):
             new_entry = Table_Manager(schema=request.POST["schema"],table=request.POST["table"])
             new_entry.save()
             Attribute.objects.all().delete()
-            # Attribute.objects.create(name=request.POST["schema"], datatype=Attribute.TYPE_TEXT)
-            # Attribute.objects.create(name=request.POST["table"], datatype=Attribute.TYPE_TEXT)
             j=0
             y=0
             for i in request.POST:
@@ -61,5 +59,5 @@ def home(request):
         except ValidationError as e:
             context['error'] = e
             return render(request,'app/home.html',context)
-        context['error'] = "Successfully"
+        context['message'] = "Successfully Added the Table to Database"
         return render(request,'app/home.html',context)

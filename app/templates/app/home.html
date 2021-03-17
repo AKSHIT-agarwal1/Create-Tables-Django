@@ -5,28 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>Dynamic Tables</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Dynamic Tables</h1>
-    {% if error %}
-    <h2>{{error}}</h2>
-    {% endif %}
-    {% if x %}
-    <h2>{{x}}</h2>
-    {% endif %}
-    <form action="{% url 'home' %}">
-        <div>Number of Column:<input type="number" name="size" min="0"></div>
-        <input type="submit" value= "Add Column">
-    </form>
-    <form action="{% url 'home' %}" method = "POST">
-        {% csrf_token %}
-       <div> Schema Name:<input type="text" name="schema" ></div>
-        <div>Table Name:<input type="text" name="table" > </div>
-        {% for x in size %}
-        <div>Column {{ x|add:"1" }}:<input type="text" name="ColumnName{{ x }}"> Data Type:<input type="text" name="DataType{{ x }}" > </div>
-        {% endfor %}
-        <input type="submit" value= "Submit">
-    </form>
-
+    
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class=" col-md-5">
+                <h1>Dynamic Tables</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-5">
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endif %}
+                {% if message %}
+                <div class="alert alert-success" role="alert">{{message}}</div>
+                {% endif %}
+                <form action="{% url 'home' %}">
+                    <div class="form-group">
+                        <label for="Number of Column">Number of Column</label>
+                        <input type="number" class="form-control" name="size" min="0">
+                    </div>
+                    <br>
+                    <input type="submit"  class="btn btn-primary" value= "Add Column">
+                </form>
+                <br>
+                <form action="{% url 'home' %}" method = "POST">
+                    {% csrf_token %}
+                <div class="form-group"> 
+                    
+                    <label for="Schema Name">Schema Name:</label>
+                    <input type="text" class="form-control" name="schema" >
+                </div>
+                <div class="form-group">
+                    <label for="Table Name">Table Name</label>
+                    <input type="text" class="form-control" name="table" > 
+                </div>
+                {% for x in size %}
+                <div class="form-group">
+                        
+                    <label for="Column {{ x|add:"1" }}">Column {{ x|add:"1" }}</label>
+                    <input type="text" class="form-control" name="ColumnName{{ x }}"> 
+                </div>
+                <div class="form-group">
+                    <label for="Data Type">Data Type</label>
+                    <input type="text" class="form-control" name="DataType{{ x }}" > 
+                </div>
+                {% endfor %}
+                <br>
+                <input type="submit"  class="btn btn-primary" value= "Submit">
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
